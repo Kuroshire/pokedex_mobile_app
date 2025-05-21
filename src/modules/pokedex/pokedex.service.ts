@@ -1,4 +1,4 @@
-import { AxiosFetching } from "../pokemon/axiosFetch";
+import { AxiosFetching } from "../../utils/axiosFetch";
 import { PokedexAPI, PokedexAPIToPokedexMapper } from "./pokedexAPI";
 
 const pokedexAPI = "https://pokeapi.co/api/v2/pokedex";

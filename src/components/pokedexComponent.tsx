@@ -5,18 +5,19 @@ import { useState, useEffect } from "react";
 import { GetPokedex } from "../modules/pokedex/pokedex.service";
 
 type PokedexProps = {
-	pokedex: Pokedex,
+	pokedexIndex: number,
 }
 
-export function PokedexComponent() {
+export function PokedexComponent({ pokedexIndex } : PokedexProps) {
 	
   const [pokedex, setPokedex] = useState<Pokedex>();
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     const loadPokedex = async () => {
       try {
-        const pokedexData = await GetPokedex(2);
+        const pokedexData = await GetPokedex(pokedexIndex);
         setPokedex(pokedexData);
       } catch(error) {
         console.log("something bad append somewhere...");

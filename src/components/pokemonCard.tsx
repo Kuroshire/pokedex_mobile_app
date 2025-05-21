@@ -1,15 +1,29 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text, StyleSheet, TouchableHighlight } from "react-native"
+import { PokemonService } from "../modules/pokemon/application/pokemon.service"
+import { Pokemon } from "../modules/pokemon/domain/pokemon"
 
 type PokemonCardProps = {
-  name: string
+  name: string,
   pokedexNumber: number,
+  openModal: (pokemon: Pokemon, pokedexNumber: number) => void,
 }
 
-export const PokemonCard = ({ name, pokedexNumber } : PokemonCardProps) => {
+export const PokemonCard = ({ name, pokedexNumber, openModal } : PokemonCardProps) => {
+
+  const onPress = async () => {
+    const pokemonInfos = await PokemonService.GetPokemonWithName(name);
+    openModal(pokemonInfos, pokedexNumber);
+  }
+
   return (
-    <View style={styles.card}>
-      <Text style={styles.text}>{ pokedexNumber } - { name }</Text>
-    </View>
+    <TouchableHighlight 
+      underlayColor="transparent" 
+      onPress={onPress}
+    >
+      <View style={styles.card}>
+        <Text style={styles.text}>{ pokedexNumber } - { name }</Text>
+      </View>
+    </TouchableHighlight>
   )
 }
 

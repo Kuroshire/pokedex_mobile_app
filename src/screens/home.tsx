@@ -2,19 +2,11 @@ import { View, Text, StyleSheet } from "react-native"
 import { PokedexComponent } from "../components/pokedexComponent";
 
 export const HomePage = () => {
-  const pokemonNameList = [
-    "Tiplouf", "Prinplouf", "Pingoléon", 
-    "Ouistikram", "Chimpenfeu", "Simiabraze", 
-    "Tortipouss", "Boskara", "Torterra", 
-    // "Etourmi", "Etourvol", "Etouraptor",
-    // "Keunotor", "Castorno",
-    // "Krikzik", "Melokrik"
-  ]; // no scroll behaviour for now...
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}> This is the Home Page !</Text>
-      <PokedexComponent />
+      <PokedexComponent pokedexIndex={2}/>
     </View>
   )
 }

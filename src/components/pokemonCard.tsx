@@ -2,12 +2,13 @@ import { View, Text, StyleSheet } from "react-native"
 
 type PokemonCardProps = {
   name: string
+  pokedexNumber: number,
 }
 
-export const PokemonCard = ({ name } : PokemonCardProps) => {
+export const PokemonCard = ({ name, pokedexNumber } : PokemonCardProps) => {
   return (
     <View style={styles.card}>
-      <Text style={styles.text}>{ name }</Text>
+      <Text style={styles.text}>{ pokedexNumber } - { name }</Text>
     </View>
   )
 }
@@ -27,5 +28,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     color: '#333',
+    textTransform: "capitalize", // the pokemon name is capitalized through the styling because the name is also the id to fetch more data, and therefore case sensitive.
   },
 });

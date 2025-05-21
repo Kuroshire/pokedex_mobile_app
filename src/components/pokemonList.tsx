@@ -1,19 +1,32 @@
-import { View } from "react-native"
+import { FlatList, View } from "react-native"
 import { PokemonCard } from "./pokemonCard"
-import { Pokemon } from "../modules/pokemon"
+import { PokedexEntry } from "../modules/pokedex/pokedex"
 
 type PokemonListProps = {
-    pokemonList: Pokemon[]
+  pokemonList: PokedexEntry[]
 }
 
 export const PokemonList = ({ pokemonList } : PokemonListProps) => {
+
   return (
-    <View>
-      {
-        pokemonList.map((pokemon, index) => 
-          <PokemonCard key={index} name={pokemon.name}/>
-        )
-      }
-    </View>
+    <FlatList
+      data={pokemonList} 
+      keyExtractor={ (pokemon) => pokemon.entryNumber.toString() }
+      renderItem={ ({item}) => (
+        <View>
+          <PokemonCard name={item.name} pokedexNumber={item.entryNumber}/> 
+        </View>
+      )}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ 
+        paddingBottom: 50,
+        paddingTop: 50,
+      }}
+    />
+      // {
+      //   pokemonList.map((pokemon, index) => 
+      //     <PokemonCard key={index} name={pokemon.name} pokedexNumber={pokemon.entryNumber}/>
+      //   )
+      // }
   )
 }

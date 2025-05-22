@@ -12,7 +12,11 @@ export const PokemonCard = ({ name, pokedexNumber, openModal } : PokemonCardProp
 
   const onPress = async () => {
     const pokemonInfos = await PokemonService.GetPokemonWithName(name);
-    openModal(pokemonInfos, pokedexNumber);
+    if(pokemonInfos) {
+      openModal(pokemonInfos, pokedexNumber);
+    } else {
+      console.log(`${name} could not be found...`);
+    }
   }
 
   return (

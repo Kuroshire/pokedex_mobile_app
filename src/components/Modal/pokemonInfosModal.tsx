@@ -1,5 +1,5 @@
-import { Modal, View, Text, Image } from "react-native";
-import { Pokemon, PokemonWithNumber } from "../modules/pokemon/domain/pokemon";
+import { Modal, View, Text } from "react-native";
+import { PokemonWithNumber } from "../../modules/pokemon/domain/pokemon";
 import { PokemonSprites } from "./pokemonSprite";
 
 type PokemonInfosModalProps = {

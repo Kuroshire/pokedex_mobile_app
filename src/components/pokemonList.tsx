@@ -1,8 +1,8 @@
 import { FlatList, View } from "react-native"
 import { PokemonCard } from "./pokemonCard"
-import { PokedexEntry } from "../modules/pokedex/pokedex"
+import { PokedexEntry } from "../modules/pokedex/domain/pokedex"
 import { useState } from "react"
-import { PokemonInfosModal } from "./pokemonInfosModal"
+import { PokemonInfosModal } from "./Modal/pokemonInfosModal"
 import { Pokemon, PokemonWithNumber } from "../modules/pokemon/domain/pokemon"
 
 type PokemonListProps = {

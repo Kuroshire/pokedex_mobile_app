@@ -1,12 +1,12 @@
 import { View, Image, TouchableOpacity, Text, StyleSheet } from "react-native";
-import { Pokemon } from "../modules/pokemon/domain/pokemon";
-import { useState } from "react";
+import { Pokemon } from "../../modules/pokemon/domain/pokemon";
+import { useMemo, useState } from "react";
 
 type PokemonSpritesProps = {
   sprites: Pokemon['sprites']
 }
 
-//sadly double entry switch doesn't exist in typescript, so i have to use an enum instead of have 2 boolean which could make things less boilerplaty...
+//sadly double entry switch doesn't exist in typescript... so i have to use an enum instead of have 2 boolean which could make things less boilerplaty...
 enum SpritePosture {
   FrontDefault,
   BackDefault,
@@ -18,10 +18,11 @@ export const PokemonSprites = ( { sprites } : PokemonSpritesProps) => {
 
   const [currentSprite, setCurrentSprite] = useState(SpritePosture.FrontDefault);
 
-  //#region Handling Sprite Posture Enum
-  const getSpriteFromPosture = () => {
-    console.log(currentSprite);
+  //required when using Image, otherwise assigning getSpriteFromPosture directly into the uri property will make the image reload each frame.
+  const imageSource = useMemo(() => getSpriteFromPosture(), [currentSprite]);
 
+  //#region Handling Sprite Posture Enum
+  function getSpriteFromPosture() {
     switch(currentSprite) {
       case SpritePosture.BackShiny:
         return sprites.backShiny;
@@ -92,7 +93,7 @@ export const PokemonSprites = ( { sprites } : PokemonSpritesProps) => {
         </TouchableOpacity>
 
         <Image 
-          source={{ uri: getSpriteFromPosture()}}
+          source={{ uri: imageSource}}
           style={{ width: 100, height: 100 }}
           />
 

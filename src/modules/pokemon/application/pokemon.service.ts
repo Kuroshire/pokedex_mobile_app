@@ -1,5 +1,9 @@
-import { GetPokemonWithNameAdapter } from "../Infra/pokemon.adapter";
+import { GetPokemonWithNamePortType, GetPokemonWithNamePort } from "./getPokemonWithName.query"
 
-export const PokemonService = {
-  GetPokemonWithName : GetPokemonWithNameAdapter,
+type PokemonServiceType = {
+  GetPokemonWithName: GetPokemonWithNamePortType,
+}
+
+export const PokemonService : PokemonServiceType = {
+  GetPokemonWithName : GetPokemonWithNamePort,
 }

@@ -1,4 +1,4 @@
-import { Pokedex } from "./pokedex"
+import { Pokedex } from "../domain/pokedex"
 
 export type PokedexAPI = {
   descriptions: PokedexDescription[],

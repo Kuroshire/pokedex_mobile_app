@@ -1,49 +1,91 @@
---------------------------------------
+# Pokédex App (React Native + Expo)
 
-How To Install & Use: 
-This project uses React Native and Typescript, and retrieve data from the open-API PokeAPI (https://pokeapi.co/api/v2/).
-This project was made with Expo.
-To use this project, you first need to have it installed on your device (for example by cloning the repo + npm install for the packages) and start it with `npx expo start`. You will also need the Expo app on your phone.
-Once the app started a QR Code will appear in your console and you can directly access the project by scanning the QR Code with your phone.
+A mobile Pokédex built with **React Native**, **TypeScript**, and **Expo**, leveraging the [PokeAPI](https://pokeapi.co/api/v2/) to fetch and display Pokémon data. Features include browsing, searching, and detailed Pokémon views — with a modular architecture.
 
+*Note: This projects currently uses 2 endpoints from PokeAPI : /pokemon & /pokedex*
 
+---
 
-The idea behind the architecture used (modules | version of Hexagonale Architecture):
+## 🚀 Getting Started
 
-When you are trying to access the API, you must go through the dedicated Service with a limited amount of usable function. 
-Each function will do one task and access the API data through an adapter. 
-The Adapter will always return the module app type (example - for the Pokemon module, every Adapter which reads and retrieves data from the API can only return a Pokemon object, and not a PokeAPIPokemon object). Adapters will go through a mapper before returning the data it collected.
+### Prerequisites
+- [Node.js](https://nodejs.org/)
+- Expo Go app on your smartphone
 
-Current Features:
+### Installation
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/yourRepo.git
+   cd yourRepo
+   npm install
+   ```
 
-1/ From the Pokedex end point, we can retrieve a list of pokemon names and pokedex number. This allws us to have the list of all the pokemons from a given pokedex and scroll through it.
+2. **Start the app**:
+   ```bash
+   npx expo start
+   ```
+   (Note: it seems like there is a depency conflict between react-native and styled-components I haven't fixed yet... You can still properly install node_modules with ```npm i --legacy-peer-deps```)
 
-2/ By clicking on a Pokemon Card, a modal will open showing basic informations about the pokemon. Informations given are the Name, Pokedex Number, the types, Height, Weight. Additioanlly, it shows the pokemon front sprite. By clicking on this sprite, you will rotate the pokemon and see its back. You can also click on the buttons below to see the pokemon's shiny form. By clicking on the colorful area on the top side of the screen when the modal is open, you will leave the detailed view and return to the pokedex. The modal background color is based on the current pokemon main type.
+3. **Launch on device**:
+   Scan the QR code in your terminal with the Expo Go app to open the project on your phone.
 
-3/ Search mode - On the header, you can see a search bar which will loosely search for matching pokemon names. (Example - Blbsr will find Bulbasaur as the letters are in the proper order even if some are missing) This features was implemented using Zustand to store the search string input. By accessing this user input and filtering the data before rendering it, we manage to have a functional search feature.
+---
 
-4/ When it comes to the API interactions, every data fetch passes through the FetchingService which uses axios within a function and will clean up the data before returning it. By going through this service, the data is structure within an object holding informations about the query sucess. Additionally, types have been created to represent the data object retrieved from the API for each end point, making it easier to work with. Notably, every API object also possess a mapper to its application equivalent.
+## 🧱 Project Architecture
 
+Built using a modular approach inspired by the **Hexagonal Architecture** pattern:
 
---- POSSIBLE IMPROVEMENTS ---
+- **Services**: Define a limited set of methods for accessing data.
+- **Adapters**: Handle API calls and translate PokeAPI responses into internal app models (e.g., converting `PokeAPIPokemon` to `Pokemon`).
+- **Mappers**: Ensure all data returned from adapters conforms to the expected app structure.
 
-Features I couldn't finish in time:
-- Possible to switch between Pokedex (an attempt was made at creating a select which would give the user a way to switch Pokedex, but the interaction was messy...).
-- Some parts of the design are made with styled-components, while other parts are still using React-Native's StyleSheet. Ideally, everything should be under the same design framework.
-- Adding a way to go to the next and previous pokemon from the modal directly. The issue with this feature came from the fact the modal can't really know which pokemons are neighboring the current selection, and would require to be passed down callback functions for this feature. However this makes the code look messy and out of place. The idea was to implement a zustand store to manage the Pokedex object as well as the current selection. By doing as such, it would reduce the amount of dependencies between all the components and simplify the project overall. However, i didn't manage to apply it in time for the review.
+This separation makes the codebase clean, testable, and easy to scale.
 
-Current issue with the API interactions: 
+---
 
-Errors are properly handled by FetchingService.
-However, if the API object retrieved doesn't match the API type assumed by the module (currently hand written from observations on the API), it may cause issues when used in components, as some fields might be undefined when expect to always have a value.
+## 🔍 Features
 
-Interesting feature to add in the future:
+### 📜 Pokédex Browser
+- Retrieves a list of Pokémon names and IDs from a given Pokédex.
+- Displays scrollable cards for each Pokémon.
 
-Light/Dark Mode, Translation (use zustand to store the settings and access it from anywhere)
-Unit Testing & Component Testing.
-Add EsLint to the project.
+### 👀 Pokémon Detail Modal
+- Tap a card to see detailed info:
+  - Name, Pokédex Number, types, height, weight
+  - Front and back sprites, and Shiny Form
+- The modal color dynamically reflects the Pokémon's main type.
 
-Note: this project is not finished yet, and i'll keep trying to improve it slightly.
+### 🔎 Fuzzy Search
+- Search Pokémon by name using fuzzy matching (e.g., `Blbsr` will find `Bulbasaur`).
+- Powered by Zustand for state management.
 
+### 🔁 API Handling
+- Centralized `FetchingService` using Axios for all API requests.
+- All responses are validated, cleaned, and mapped to internal types for consistency.
 
----------------------------------------------------------------------------
+---
+
+## ✨ Planned Improvements
+
+### Features
+- Switch between different Pokédexes via a dropdown. (I didn't have time to properly implement this feature yet, as I ended up having interaction conflict between the dropdown and the Pokedex sliding...)
+- Add navigation buttons in the modal to go to next/previous Pokémon. (adding the feature currently would make the code messier than it should. Creating a currentSelectionStore with Zustand first would be interesting for this feature)
+- Unified styling (migrate all from `StyleSheet` to `styled-components`).
+
+### Code Quality
+- Use Zustand to manage global state like current selection and Pokédex data.
+- Add ESLint for linting and code consistency.
+- Implement unit and component tests.
+
+### User Experience
+- Light/Dark mode support.
+- Multilingual support with Zustand-based settings.
+
+---
+
+## ⚠️ Known Issues
+
+- Some inconsistencies between expected API structure and actual data might cause `undefined` fields.
+- The modal cannot currently determine neighboring Pokémon without additional state logic (planned fix with Zustand).
+
+---

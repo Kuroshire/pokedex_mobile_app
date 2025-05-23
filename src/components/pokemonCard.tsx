@@ -1,19 +1,22 @@
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native"
-import { PokemonService } from "../modules/pokemon/application/pokemon.service"
-import { Pokemon } from "../modules/pokemon/domain/pokemon"
+import { PokemonService } from "../modules/pokemon/application/pokemon.service";
+import { PokemonWithNumber } from "../modules/pokemon/domain/pokemon";
 
 type PokemonCardProps = {
   name: string,
   pokedexNumber: number,
-  openModal: (pokemon: Pokemon, pokedexNumber: number) => void,
+  openModal: (pokemon: PokemonWithNumber) => void,
 }
 
 export const PokemonCard = ({ name, pokedexNumber, openModal } : PokemonCardProps) => {
-
+  
   const onPress = async () => {
     const pokemonInfos = await PokemonService.GetPokemonWithName(name);
     if(pokemonInfos) {
-      openModal(pokemonInfos, pokedexNumber);
+      openModal({
+        ...pokemonInfos, 
+        pokedexNumber
+      });
     } else {
       console.log(`${name} could not be found...`);
     }

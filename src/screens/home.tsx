@@ -1,26 +1,25 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, StyleSheet } from "react-native"
 import { PokedexComponent } from "../components/pokedexComponent";
+import { TOTAL_HEADER_HEIGHT } from "../components/pokedexHeader";
+
 
 export const HomePage = () => {
-
+  
   return (
     <View style={styles.container}>
-      <Text style={styles.title}> This is the Home Page !</Text>
-      <PokedexComponent pokedexIndex={2}/>
+      <PokedexComponent pokedexIndex={1}/>
     </View>
   )
 }
 
+const CONTAINER_PADDING = 40;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: CONTAINER_PADDING,
     justifyContent: 'center',
     backgroundColor: '#fff',
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginBottom: 20,
+    marginTop: TOTAL_HEADER_HEIGHT - CONTAINER_PADDING,
   },
 });

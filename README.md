@@ -2,6 +2,8 @@
 
 A mobile Pokédex built with **React Native**, **TypeScript**, and **Expo**, leveraging the [PokeAPI](https://pokeapi.co/api/v2/) to fetch and display Pokémon data. Features include browsing, searching, and detailed Pokémon views — with a modular architecture.
 
+Additionally, this project uses styled-components and Zustand. I chose Zustand because it is a light-weight, fast-to-implement version of Redux, making it more appropriate for smaller projects while being just as effective.
+
 *Note: This projects currently uses 2 endpoints from PokeAPI : /pokemon & /pokedex*
 
 ---

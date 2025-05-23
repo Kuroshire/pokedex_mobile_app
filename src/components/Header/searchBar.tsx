@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { TextInput, View, StyleSheet } from "react-native"
-import { useSearchStore } from "../services/useSearchStore";
+import { useSearchStore } from "../../services/useSearchStore";
 
 export const SearchBar = () => {
   const SearchStore = useSearchStore();

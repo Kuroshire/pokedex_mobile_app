@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native"
-import { PokemonService } from "../modules/pokemon/application/pokemon.service";
-import { PokemonWithNumber } from "../modules/pokemon/domain/pokemon";
+import { PokemonService } from "../../modules/pokemon/application/pokemon.service";
+import { PokemonWithNumber } from "../../modules/pokemon/domain/pokemon";
 
 type PokemonCardProps = {
   name: string,

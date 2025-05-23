@@ -1,8 +1,10 @@
-import { View, Text, TouchableHighlight } from "react-native";
-import { PokemonList } from "./pokemonList";
-import { Pokedex, PokedexEntry } from "../modules/pokedex/domain/pokedex";
+import { View } from "react-native";
+import { Pokedex } from "../../modules/pokedex/domain/pokedex";
 import { useState, useEffect } from "react";
-import { PokedexService } from "../modules/pokedex/application/pokedex.service";
+import { PokedexService } from "../../modules/pokedex/application/pokedex.service";
+import { PokemonList } from "./pokemonList";
+import { LoadingComponent } from "../Problem Display/loadingComponent";
+import { ErrorComponent } from "../Problem Display/errorComponent";
 
 type PokedexProps = {
 	pokedexIndex: number,
@@ -34,23 +36,18 @@ export function PokedexComponent({ pokedexIndex } : PokedexProps) {
   }, [Reload]);
 
   if(loading) {
-		return <Text>Chargement...</Text>
+		return <LoadingComponent />
 	} 
 
 	if(!pokedex) {
 		return (
-      <View>
-        <Text>Pokedex not found...</Text>
-        <TouchableHighlight onPress={Reload}>Reload</TouchableHighlight>
-      </View>
+      <ErrorComponent errorText="Failed to load pokedex..." Reload={Reload}/>
     )
 	}
 
-	const entries: PokedexEntry[] = pokedex.entries;
-
 	return (
 		<View>
-			<PokemonList pokemonList={entries} />
+			<PokemonList pokemonList={pokedex.entries} />
 		</View>
 	)
 }

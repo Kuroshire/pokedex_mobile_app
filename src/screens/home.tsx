@@ -1,5 +1,5 @@
 import { View, StyleSheet } from "react-native"
-import { PokedexComponent } from "../components/pokedexComponent";
+import { PokedexComponent } from "../components/Pokedex/pokedexComponent";
 import { TOTAL_HEADER_HEIGHT } from "../components/Header/pokedexHeader";
 
 

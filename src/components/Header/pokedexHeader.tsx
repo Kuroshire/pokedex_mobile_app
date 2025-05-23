@@ -1,6 +1,6 @@
 import { View, StyleSheet } from "react-native"
 import { useEffect, useState } from "react";
-import { SearchBar } from "../searchBar";
+import { SearchBar } from "./searchBar";
 
 export const HEADER_HEIGHT = 70;
 const STATUSBAR_HEIGHT = 50; 

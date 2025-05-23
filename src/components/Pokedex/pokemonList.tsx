@@ -1,11 +1,11 @@
 import { FlatList, View } from "react-native"
 import { PokemonCard } from "./pokemonCard"
-import { PokedexEntry } from "../modules/pokedex/domain/pokedex"
+import { PokedexEntry } from "../../modules/pokedex/domain/pokedex"
 import { useState } from "react"
-import { PokemonInfosModal } from "./Modal/pokemonInfosModal"
-import { PokemonWithNumber } from "../modules/pokemon/domain/pokemon"
-import { useSearchStore } from "../services/useSearchStore"
-import { FilterStringLoosely } from "../utils/filterStringLoosely"
+import { PokemonInfosModal } from "../Modal/pokemonInfosModal"
+import { PokemonWithNumber } from "../../modules/pokemon/domain/pokemon"
+import { useSearchStore } from "../../services/useSearchStore"
+import { FilterStringLoosely } from "../../utils/filterStringLoosely"
 
 type PokemonListProps = {
   pokemonList: PokedexEntry[]

@@ -1,10 +1,11 @@
 import { FetchingService } from "../../../utils/fetchingService";
-import { Pokemon, PokemonDataToPokemonMapper } from "../domain/pokemon";
+import { GetPokemonWithNamePortType } from "../application/getPokemonWithName.query";
+import { PokemonDataToPokemonMapper } from "../domain/pokemon";
 import { PokeAPIPokemon } from "../Infra/pokeAPI.type";
 
 const pokemonAPI = "https://pokeapi.co/api/v2/pokemon";
 
-export const GetPokemonWithNameAdapter = async (name: string) => {
+export const GetPokemonWithNameAdapter: GetPokemonWithNamePortType = async (name: string) => {
   const apiPath = `${pokemonAPI}/${name.toLowerCase()}`;
 
   const pokemonData = await FetchingService.AxiosFetching<PokeAPIPokemon>(apiPath);

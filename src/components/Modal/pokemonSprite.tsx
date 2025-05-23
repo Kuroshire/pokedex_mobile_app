@@ -3,7 +3,9 @@ import { Pokemon } from "../../modules/pokemon/domain/pokemon";
 import { useMemo, useState } from "react";
 
 type PokemonSpritesProps = {
-  sprites: Pokemon['sprites']
+  sprites: Pokemon['sprites'],
+  // onPressPreviousPokemon: () => Promise<void>, 
+  // onPressNextPokemon: () => Promise<void>,
 }
 
 //sadly double entry switch doesn't exist in typescript... so i have to use an enum instead of have 2 boolean which could make things less boilerplaty...
@@ -88,16 +90,18 @@ export const PokemonSprites = ( { sprites } : PokemonSpritesProps) => {
     <View style={styles.container}>
 
       <View style={styles.imageRow}>
-        <TouchableOpacity style={styles.arrowButton} onPress={toggleFrontBack}>
+        <TouchableOpacity style={styles.arrowButton} onPress={() => { }}>
           <Text style={styles.arrowText}>{'<'}</Text>
         </TouchableOpacity>
 
-        <Image 
-          source={{ uri: imageSource}}
-          style={{ width: 100, height: 100 }}
-          />
+        <TouchableOpacity onPress={toggleFrontBack}>
+          <Image 
+            source={{ uri: imageSource}}
+            style={{ width: 100, height: 100 }}
+            />
+        </TouchableOpacity>
 
-        <TouchableOpacity style={styles.arrowButton} onPress={toggleFrontBack}>
+        <TouchableOpacity style={styles.arrowButton} onPress={() => { }}>
           <Text style={styles.arrowText}>{'>'}</Text>
         </TouchableOpacity>
       </View>
@@ -108,7 +112,7 @@ export const PokemonSprites = ( { sprites } : PokemonSpritesProps) => {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.actionButton} onPress={setShiny}>
-          <Text style={styles.buttonText}>Shiny</Text>
+          <Text style={styles.buttonText}>✨</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -142,8 +146,8 @@ const styles = StyleSheet.create({
   },
   actionButton: {
     padding: 12,
+    borderRadius: 25,
     backgroundColor: "#2e86de",
-    borderRadius: 8,
   },
   buttonText: {
     color: "white",

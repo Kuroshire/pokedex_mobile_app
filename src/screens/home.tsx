@@ -1,13 +1,13 @@
 import { View, StyleSheet } from "react-native"
 import { PokedexComponent } from "../components/pokedexComponent";
-import { TOTAL_HEADER_HEIGHT } from "../components/pokedexHeader";
+import { TOTAL_HEADER_HEIGHT } from "../components/Header/pokedexHeader";
 
 
 export const HomePage = () => {
   
   return (
     <View style={styles.container}>
-      <PokedexComponent pokedexIndex={1}/>
+      <PokedexComponent pokedexIndex={2}/>
     </View>
   )
 }

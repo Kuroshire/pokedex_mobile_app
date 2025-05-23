@@ -1,4 +1,4 @@
-import { FetchingService } from "../../../utils/fetchingService";
+import { FetchingService } from "../../../services/fetchingService";
 import { GetPokemonWithNamePortType } from "../application/getPokemonWithName.query";
 import { PokemonDataToPokemonMapper } from "../domain/pokemon";
 import { PokeAPIPokemon } from "../Infra/pokeAPI.type";

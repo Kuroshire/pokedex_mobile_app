@@ -1,8 +1,6 @@
-import { TouchableOpacity, View, Text, StyleSheet } from "react-native"
-import { PokedexList } from "../modules/pokedex/pokedexList";
+import { View, StyleSheet } from "react-native"
 import { useEffect, useState } from "react";
-import { PokedexService } from "../modules/pokedex/application/pokedex.service";
-import { SearchBar } from "./searchBar";
+import { SearchBar } from "../searchBar";
 
 export const HEADER_HEIGHT = 70;
 const STATUSBAR_HEIGHT = 50; 
@@ -10,8 +8,6 @@ export const TOTAL_HEADER_HEIGHT = HEADER_HEIGHT + STATUSBAR_HEIGHT;
 
 
 export const PokedexHeader = () => {
-  const pokedexOptions = Object.keys(PokedexList);
-
   const [currentPokedex, setCurrentPokedex] = useState(0);
 
   useEffect(() => {
@@ -19,14 +15,6 @@ export const PokedexHeader = () => {
     console.log("new pokedex : " + currentPokedex);
     
   }, [setCurrentPokedex]);
-
-  const GetCurrentPokedexName = () => {
-    const currentPokedexID = pokedexOptions.find((pokedexName) => PokedexList[pokedexName] == currentPokedex);
-    if(!currentPokedexID) {
-      return pokedexOptions[0];
-    }
-    return currentPokedexID;
-  }
 
   return (
     <View style={styles.header}>

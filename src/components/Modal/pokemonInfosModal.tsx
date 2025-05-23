@@ -1,5 +1,5 @@
 import { Modal, TouchableWithoutFeedback } from "react-native";
-import { Pokemon, PokemonWithNumber } from "../../modules/pokemon/domain/pokemon";
+import { PokemonWithNumber } from "../../modules/pokemon/domain/pokemon";
 import { PokemonSprites } from "./pokemonSprite";
 import styled from "styled-components/native";
 import { GetColorFromType } from "../../modules/pokemonTypes/pokemonTypes";
@@ -7,9 +7,7 @@ import { CapitalizeName } from "../../utils/capitalizeName";
 import { PokemonTypeLabel } from "./pokemonTypeLabel";
 import { PokemonMorphology } from "./pokemonMorphology";
 import { CloseButton } from "./closeButton";
-import { HEADER_HEIGHT } from "../pokedexHeader";
-import { PokemonService } from "../../modules/pokemon/application/pokemon.service";
-import { useEffect, useState } from "react";
+import { HEADER_HEIGHT } from "../Header/pokedexHeader";
 
 type PokemonInfosModalProps = {
   isVisible: boolean,

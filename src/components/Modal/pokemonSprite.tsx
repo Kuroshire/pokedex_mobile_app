@@ -90,9 +90,9 @@ export const PokemonSprites = ( { sprites } : PokemonSpritesProps) => {
     <View style={styles.container}>
 
       <View style={styles.imageRow}>
-        <TouchableOpacity style={styles.arrowButton} onPress={() => { }}>
+        {/* <TouchableOpacity style={styles.arrowButton} onPress={() => { }}>
           <Text style={styles.arrowText}>{'<'}</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <TouchableOpacity onPress={toggleFrontBack}>
           <Image 
@@ -101,9 +101,9 @@ export const PokemonSprites = ( { sprites } : PokemonSpritesProps) => {
             />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.arrowButton} onPress={() => { }}>
+        {/* <TouchableOpacity style={styles.arrowButton} onPress={() => { }}>
           <Text style={styles.arrowText}>{'>'}</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
       <View style={styles.buttonRow}>

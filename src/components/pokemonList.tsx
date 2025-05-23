@@ -1,9 +1,12 @@
-import { FlatList, View } from "react-native"
+import { FlatList, View, Text, TouchableHighlight } from "react-native"
 import { PokemonCard } from "./pokemonCard"
 import { PokedexEntry } from "../modules/pokedex/domain/pokedex"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { PokemonInfosModal } from "./Modal/pokemonInfosModal"
-import { Pokemon, PokemonWithNumber } from "../modules/pokemon/domain/pokemon"
+import { PokemonWithNumber } from "../modules/pokemon/domain/pokemon"
+import { useSearchStore } from "../services/useSearchStore"
+import { FilterStringLoosely } from "../utils/filterStringLoosely"
+import { PokemonService } from "../modules/pokemon/application/pokemon.service"
 
 type PokemonListProps = {
   pokemonList: PokedexEntry[]
@@ -13,17 +16,22 @@ export const PokemonList = ({ pokemonList } : PokemonListProps) => {
 
   const [selectedPokemon, setSelectedPokemon] = useState<PokemonWithNumber | undefined>();
   
-  const OpenModal = (pokemon: Pokemon, pokedexNumber: number) => {
-    setSelectedPokemon({
-      ...pokemon, 
-      pokedexNumber
-    });
+  const OpenModal = (pokemon: PokemonWithNumber) => {
+    setSelectedPokemon(pokemon);
   }
+
+  //#region Pokemon Search
+  const searchedPokemon = useSearchStore((state) => state.searchedName);
+
+  const filterPokemonList = pokemonList.filter((pokemon) => 
+    FilterStringLoosely(searchedPokemon.toLowerCase(), pokemon.name.toLowerCase())
+  );
+  //#endregion
 
   return (
     <View>
       <FlatList
-        data={pokemonList} 
+        data={filterPokemonList} 
         keyExtractor={ (pokemon) => pokemon.entryNumber.toString() }
         renderItem={ ({item}) => (
           <View>
@@ -36,7 +44,7 @@ export const PokemonList = ({ pokemonList } : PokemonListProps) => {
           paddingTop: 50,
         }}
       />
-      <PokemonInfosModal visible={selectedPokemon != undefined} onClose={() => setSelectedPokemon(undefined)} pokemon={selectedPokemon} />
+      <PokemonInfosModal isVisible={selectedPokemon != undefined} pokemon={selectedPokemon} onClose={() => setSelectedPokemon(undefined)}/>
     </View>
   )
 }

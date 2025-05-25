@@ -8,7 +8,7 @@ import { useSearchStore } from "../../services/useSearchStore"
 import { FilterStringLoosely } from "../../utils/filterStringLoosely"
 
 type PokemonListProps = {
-  pokemonList: PokedexEntry[]
+  pokemonList: PokedexEntry[],
 }
 
 export const PokemonList = ({ pokemonList } : PokemonListProps) => {

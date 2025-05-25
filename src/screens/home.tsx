@@ -4,10 +4,9 @@ import { TOTAL_HEADER_HEIGHT } from "../components/Header/pokedexHeader";
 
 
 export const HomePage = () => {
-  
   return (
     <View style={styles.container}>
-      <PokedexComponent pokedexIndex={2}/>
+      <PokedexComponent />
     </View>
   )
 }

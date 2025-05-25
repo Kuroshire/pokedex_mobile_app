@@ -1,6 +1,6 @@
-import { View, StyleSheet } from "react-native"
-import { useEffect, useState } from "react";
+import { View, StyleSheet } from "react-native";
 import { SearchBar } from "./searchBar";
+import { ChoosePokedex } from "./ChoosePokedex/choosePokedex";
 
 export const HEADER_HEIGHT = 70;
 const STATUSBAR_HEIGHT = 50; 
@@ -8,18 +8,11 @@ export const TOTAL_HEADER_HEIGHT = HEADER_HEIGHT + STATUSBAR_HEIGHT;
 
 
 export const PokedexHeader = () => {
-  const [currentPokedex, setCurrentPokedex] = useState(0);
-
-  useEffect(() => {
-    //const fetchedPokedex = await PokedexService.GetPokedex(currentPokedex);
-    console.log("new pokedex : " + currentPokedex);
-    
-  }, [setCurrentPokedex]);
-
   return (
     <View style={styles.header}>
       <View style={styles.slighlyLowerHeader}>
         <SearchBar />
+        <ChoosePokedex />
       </View>
     </View>
   )
@@ -40,6 +33,11 @@ const styles = StyleSheet.create({
   },
   slighlyLowerHeader: {
     top: STATUSBAR_HEIGHT / 2,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    alignItems: 'center',
+    paddingHorizontal: 5,
   },
   pokedexSelectionText: {
     color: 'white',

@@ -1,4 +1,4 @@
-import { TextInput, View, StyleSheet } from "react-native"
+import { TextInput, View, StyleSheet } from "react-native";
 import { useSearchStore } from "../../services/useSearchStore";
 
 export const SearchBar = () => {
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   searchBar: {
     // backgroundColor: 'rgba(170, 170, 170, 0.29)',
     // borderRadius: 12,
+    height: 40,
     width: 150,
     fontStyle: 'italic',
     borderBottomWidth: 2,

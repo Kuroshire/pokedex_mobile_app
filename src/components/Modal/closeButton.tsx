@@ -17,7 +17,7 @@ const CloseButtonBackground = styled.TouchableOpacity`
   height: 50px;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 40px;
 `;
 

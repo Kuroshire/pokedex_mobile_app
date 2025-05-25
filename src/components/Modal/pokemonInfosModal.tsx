@@ -39,8 +39,8 @@ export const PokemonInfosModal = ({isVisible, pokemon, onClose} : PokemonInfosMo
             <ModalContainer>
               <Title>N° : {DisplayNumberWithZeros(pokemon.pokedexNumber)} { CapitalizeName(pokemon.name) }</Title>
               <PokemonSprites sprites={pokemon.sprites} />
-              <PokemonTypeLabel pokemonTypes={pokemon.types}/>
-              <PokemonMorphology weight={pokemon.weight} height={pokemon.height}/>
+              <PokemonTypeLabel pokemonTypes={pokemon.types} />
+              <PokemonMorphology weight={pokemon.weight} height={pokemon.height} />
             </ModalContainer>
           </TouchableWithoutFeedback>
 
@@ -52,8 +52,8 @@ export const PokemonInfosModal = ({isVisible, pokemon, onClose} : PokemonInfosMo
 
 const ModalBackground = styled.View`
   flex: 1;
-  background-color: ${(props: { pokemonType: string; }) => GetColorFromType({typeName: props.pokemonType, alpha: "66"})};
-  top: ${HEADER_HEIGHT};
+  background-color: ${(props: { pokemonType: string; }) => GetColorFromType({typeName: props.pokemonType, alpha: "CC"})};
+  top: ${HEADER_HEIGHT}px;
   justify-content: flex-end;
 `;
 

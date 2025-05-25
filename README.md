@@ -50,6 +50,7 @@ This separation makes the codebase clean, testable, and easy to scale.
 ### 📜 Pokédex Browser
 - Retrieves a list of Pokémon names and IDs from a given Pokédex.
 - Displays scrollable cards for each Pokémon.
+- [NEW] You can change Pokédex by clicking on its name in the Header.
 
 ### 👀 Pokémon Detail Modal
 - Tap a card to see detailed info:
@@ -70,7 +71,6 @@ This separation makes the codebase clean, testable, and easy to scale.
 ## ✨ Planned Improvements
 
 ### Features
-- Switch between different Pokédexes via a dropdown. (I didn't have time to properly implement this feature yet, as I ended up having interaction conflict between the dropdown and the Pokedex sliding...)
 - Add navigation buttons in the modal to go to next/previous Pokémon. (adding the feature currently would make the code messier than it should. Creating a currentSelectionStore with Zustand first would be interesting for this feature)
 - Unified styling (migrate all from `StyleSheet` to `styled-components`).
 
